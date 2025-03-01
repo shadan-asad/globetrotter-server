@@ -50,14 +50,14 @@ components:
       properties:
         questionId:
           type: string
-        clue:
-          type: string
+        clues:
+          type: array
+          items:
+            type: string
         options:
           type: array
           items:
             type: string
-        correctAnswer:
-          type: string
 
     GameResponse:
       type: object
