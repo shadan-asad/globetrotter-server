@@ -33,7 +33,7 @@ export const getGameQuestion = async (req: Request, res: Response): Promise<void
     
     // Pick a random clue
     const clueIndex = Math.floor(Math.random() * destination.clues.length);
-    const clue = destination.clues[clueIndex];
+    const clues = destination.clues;
     
     // Create options array with correct answer and 3 wrong answers
     const correctAnswer = `${destination.city}, ${destination.country}`;
@@ -51,7 +51,7 @@ export const getGameQuestion = async (req: Request, res: Response): Promise<void
     // Create game question
     const question: GameQuestion = {
       questionId: destination._id.toString(),
-      clue,
+      clues,
       options,
       correctAnswer
     };

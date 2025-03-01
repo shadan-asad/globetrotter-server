@@ -9,7 +9,7 @@ export interface DestinationData {
 
 export interface GameQuestion {
   questionId: string;
-  clue: string;
+  clues: string;
   options: string[];
   correctAnswer: string;
 }
