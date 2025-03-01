@@ -11,7 +11,6 @@ export interface GameQuestion {
   questionId: string;
   clues: string;
   options: string[];
-  correctAnswer: string;
 }
 
 export interface GameResponse {

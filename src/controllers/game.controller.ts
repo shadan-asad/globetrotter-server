@@ -52,8 +52,7 @@ export const getGameQuestion = async (req: Request, res: Response): Promise<void
     const question: GameQuestion = {
       questionId: destination._id.toString(),
       clues,
-      options,
-      correctAnswer
+      options
     };
     
     res.status(200).json(question);
