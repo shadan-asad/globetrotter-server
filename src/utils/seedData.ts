@@ -56,6 +56,118 @@ const starterData = [
       "The Empire State Building has its own zip code: 10118.",
     ],
   },
+  {
+    "city": "London",
+    "country": "UK",
+    "clues": [
+      "Home to Big Ben and Buckingham Palace.",
+      "Known for its red double-decker buses and iconic black cabs."
+    ],
+    "fun_fact": [
+      "The Great Fire of London in 1666 destroyed a large portion of the city but also helped to eradicate the plague.",
+      "London's iconic Big Ben is actually the name of the bell, not the clock tower."
+    ],
+    "trivia": [
+      "London has over 170 museums, many of which are free to enter.",
+      "The city has been inhabited since Roman times, when it was called Londinium."
+    ]
+  },
+  {
+    "city": "Rome",
+    "country": "Italy",
+    "clues": [
+      "Home to the Colosseum and the Vatican City.",
+      "Known for its ancient ruins and delicious pasta."
+    ],
+    "fun_fact": [
+      "Rome's Trevi Fountain famously collects around €3,000 in coins daily, which are donated to charity.",
+      "The Pantheon, built in 126 AD, has the world's largest unreinforced concrete dome."
+    ],
+    "trivia": [
+      "Rome has more fountains than any other city in the world.",
+      "The city was founded in 753 BC, according to legend by Romulus and Remus."
+    ]
+  },
+  {
+    "city": "Sydney",
+    "country": "Australia",
+    "clues": [
+      "Home to a distinctive opera house with sail-shaped roofs.",
+      "Known for its beautiful harbor and surfing beaches."
+    ],
+    "fun_fact": [
+      "The Sydney Opera House's roof is covered in over 1 million tiles.",
+      "Sydney is built around the world's largest natural harbor."
+    ],
+    "trivia": [
+      "Sydney has more than 100 beaches.",
+      "The city was originally called Sydney Cove."
+    ]
+  },
+  {
+    "city": "Dubai",
+    "country": "UAE",
+    "clues": [
+      "Home to the world's tallest building, the Burj Khalifa.",
+      "Known for its luxurious shopping malls and man-made islands."
+    ],
+    "fun_fact": [
+      "Dubai's police force uses supercars like Lamborghinis and Ferraris.",
+      "The Palm Jumeirah is a man-made archipelago shaped like a palm tree."
+    ],
+    "trivia": [
+      "Dubai's indoor ski resort, Ski Dubai, was the first of its kind in the Middle East.",
+      "The city has a 'Gold Souk' with hundreds of jewelry shops."
+    ]
+  },
+  {
+    "city": "Barcelona",
+    "country": "Spain",
+    "clues": [
+      "Known for the unique architecture of Antoni Gaudí, including the Sagrada Familia.",
+      "Famous for its vibrant street life and beaches."
+    ],
+    "fun_fact": [
+      "The Sagrada Familia has been under construction for over 130 years and is still not finished.",
+      "Barcelona's La Rambla is a famous pedestrian street known for its flower stalls and street performers."
+    ],
+    "trivia": [
+      "Barcelona is the capital of Catalonia.",
+      "The city has a rich history dating back to Roman times."
+    ]
+  },
+  {
+    "city": "Singapore",
+    "country": "Singapore",
+    "clues": [
+      "Known for its clean streets and futuristic architecture, like the Gardens by the Bay.",
+      "A city-state famous for its diverse food scene and strict laws."
+    ],
+    "fun_fact": [
+      "Singapore has a 'vertical forest' called the Gardens by the Bay, with supertrees that light up at night.",
+      "Changi Airport has been voted the world's best airport multiple times."
+    ],
+    "trivia": [
+      "Singapore is one of the world's only three city-states.",
+      "The Merlion, a mythical creature with a lion's head and a fish's body, is the city's symbol."
+    ]
+  },
+  {
+    "city": "Cairo",
+    "country": "Egypt",
+    "clues": [
+      "Home to the Great Pyramids of Giza and the Sphinx.",
+      "Known for its rich history and the Nile River."
+    ],
+    "fun_fact": [
+      "The Great Pyramid of Giza was built as a tomb for Pharaoh Khufu and is the oldest of the Seven Wonders of the Ancient World.",
+      "Cairo is the largest city in Africa and the Arab world."
+    ],
+    "trivia": [
+      "The Egyptian Museum in Cairo houses the world's most extensive collection of pharaonic antiquities.",
+      "Cairo is often called 'The City of a Thousand Minarets' due to its many mosques."
+    ]
+  }
 ];
 
 // Function to seed the database

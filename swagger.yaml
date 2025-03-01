@@ -1,0 +1,343 @@
+openapi: 3.0.0
+info:
+  title: Globetrotter Game API
+  description: API documentation for the Globetrotter geography game
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000
+    description: Development server
+
+components:
+  schemas:
+    Destination:
+      type: object
+      properties:
+        _id:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        clues:
+          type: array
+          items:
+            type: string
+        fun_fact:
+          type: array
+          items:
+            type: string
+        trivia:
+          type: array
+          items:
+            type: string
+
+    UserStats:
+      type: object
+      properties:
+        correct:
+          type: number
+        incorrect:
+          type: number
+        totalPlayed:
+          type: number
+        lastPlayed:
+          type: string
+          format: date-time
+
+    GameQuestion:
+      type: object
+      properties:
+        questionId:
+          type: string
+        clue:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+        correctAnswer:
+          type: string
+
+    GameResponse:
+      type: object
+      properties:
+        correct:
+          type: boolean
+        funFact:
+          type: string
+        correctAnswer:
+          type: string
+
+paths:
+  /api/destinations:
+    get:
+      summary: Get all destinations
+      tags:
+        - Destinations
+      responses:
+        '200':
+          description: List of all destinations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Destination'
+        '500':
+          description: Server error
+
+    post:
+      summary: Add new destination
+      tags:
+        - Destinations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Destination'
+      responses:
+        '201':
+          description: Destination created successfully
+        '400':
+          description: Invalid input
+        '500':
+          description: Server error
+
+  /api/destinations/random:
+    get:
+      summary: Get random destination
+      tags:
+        - Destinations
+      responses:
+        '200':
+          description: Random destination
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '404':
+          description: No destinations found
+        '500':
+          description: Server error
+
+  /api/destinations/{id}:
+    get:
+      summary: Get destination by ID
+      tags:
+        - Destinations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Destination found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '404':
+          description: Destination not found
+        '500':
+          description: Server error
+
+  /api/game/question:
+    get:
+      summary: Get a random game question
+      tags:
+        - Game
+      responses:
+        '200':
+          description: Game question generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameQuestion'
+        '404':
+          description: No destinations found
+        '500':
+          description: Server error
+
+  /api/game/answer:
+    post:
+      summary: Submit answer and get feedback
+      tags:
+        - Game
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                questionId:
+                  type: string
+                answer:
+                  type: string
+                username:
+                  type: string
+              required:
+                - questionId
+                - answer
+      responses:
+        '200':
+          description: Answer processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameResponse'
+        '400':
+          description: Invalid input
+        '404':
+          description: Destination not found
+        '500':
+          description: Server error
+
+  /api/users/register:
+    post:
+      summary: Register or get a user
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+                - username
+      responses:
+        '200':
+          description: User registered/retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                      gameStats:
+                        $ref: '#/components/schemas/UserStats'
+        '400':
+          description: Username is required
+        '500':
+          description: Server error
+
+  /api/users/profile/{username}:
+    get:
+      summary: Get user profile
+      tags:
+        - Users
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  gameStats:
+                    $ref: '#/components/schemas/UserStats'
+        '404':
+          description: User not found
+        '500':
+          description: Server error
+
+  /api/users/challenge/create:
+    post:
+      summary: Create a new challenge
+      tags:
+        - Challenges
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+                - username
+      responses:
+        '201':
+          description: Challenge created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  challengeId:
+                    type: string
+                  inviteUrl:
+                    type: string
+                  message:
+                    type: string
+        '400':
+          description: Username is required
+        '404':
+          description: User not found
+        '500':
+          description: Server error
+
+  /api/users/challenge/join:
+    post:
+      summary: Join an existing challenge
+      tags:
+        - Challenges
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                challengeId:
+                  type: string
+                username:
+                  type: string
+              required:
+                - challengeId
+                - username
+      responses:
+        '200':
+          description: Challenge joined successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  challengeId:
+                    type: string
+                  creatorUsername:
+                    type: string
+                  creatorStats:
+                    $ref: '#/components/schemas/UserStats'
+                  message:
+                    type: string
+        '400':
+          description: Invalid input or inactive challenge
+        '404':
+          description: Challenge or user not found
+        '500':
+          description: Server error
