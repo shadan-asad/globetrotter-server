@@ -2,6 +2,9 @@
 
 Globetrotter is a geography learning game that challenges users to identify cities around the world based on clues. The application provides an interactive way to learn about different destinations, with fun facts and trivia about each location.
 
+### Live Url for APIs: https://globetrotter-server-production.up.railway.app/api
+### Frontend: https://github.com/shadan-asad/globetrotter-client
+
 ## Project Overview
 
 This repository contains the backend server for the Globetrotter application, built with Node.js, Express, TypeScript, and MongoDB. The server provides RESTful API endpoints for:
