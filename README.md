@@ -41,7 +41,7 @@ Before running this project, make sure you have the following installed:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/globetrotter-server.git
+   git clone https://github.com/shadan-asad/globetrotter-server.git
    cd globetrotter-server
    ```
 
